@@ -1,1 +1,17 @@
-<p>completati works!</p>
+<div id="main" class="d-flex flex-column align-items-center justify-content-end">
+  <ng-container *ngIf="!carica else alternativo">
+  <div id="lista" *ngFor="let todo of todos">
+    <div class="card my-3" *ngIf="todo && todo.completed">
+      <div class="card-body">
+        <div class="d-flex align-items-center w-100 justify-content-between">
+        <h4 class="card-title">{{todo.title}}</h4>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+  <ng-template #alternativo>
+    <h1>Recupero Task...</h1>
+  </ng-template>
+  </div>
