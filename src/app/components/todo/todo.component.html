@@ -5,7 +5,7 @@
   <ng-container class="flex-grow-1" *ngIf="!carica else alternativo">
     <ng-container  *ngIf="!isEmpty() else vuota">
   <div id="lista" *ngFor="let todo of todos">
-    <ng-container *ngIf="!carica2 || current != todo.id else charge">
+    <ng-container *ngIf="!isCurrent(todo) else charge">
       <div class="card my-3" *ngIf="todo && !todo.completed">
         <div class="card-body">
           <div class="d-flex align-items-center w-100 justify-content-between">
@@ -25,7 +25,7 @@
   <ng-template #vuota>
     <h1>Opps, non ci sono task!</h1>
   </ng-template>
-    <div class="d-flex">
+    <div id="form" class="d-flex">
       <input type="text" class="form-control my-4" [title]="title" [(ngModel)]="title"/>
       <button (click)="action1()">
         <img class="img-fluid w-100" src="../../../assets/img/add.svg"/>

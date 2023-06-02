@@ -16,8 +16,8 @@ export class TodoComponent implements OnInit, OnChanges, AfterViewChecked{
   srv: TodosService;
   todos : Todo[];
   carica: boolean = true;
-  carica2: boolean = true;
-  current:number=0;
+//  carica2: boolean = true;
+  current:number[]=[];
   cdr: ChangeDetectorRef;
 
 
@@ -30,20 +30,34 @@ export class TodoComponent implements OnInit, OnChanges, AfterViewChecked{
 
 
   action1():void{
+    if(this.title && this.title != ''){
     console.log(this.title);
     this.srv.addTodo({title:this.title});
     this.title = '';
+    }
    // this.todos = this.srv.todoList();
   }
   action2(item:Todo):void{
-    this.current = item.id;
-    this.carica2=true;
+    this.current.push(item.id);
+
+  //  this.carica2=true;
     setTimeout(() => {
     this.srv.completeTodo(item.id);
     this.todos = [];
-    this.carica2 = false;
-    this.current = 0;
+
+    let index = this.current.indexOf(item.id);
+    if(index != -1){
+      this.current.splice(index, 1);
+    }
+  /*  if(this.current.length == 0){
+      this.carica2 = false;
+    }
+    */
     },2000);
+  }
+
+  isCurrent(todo:Todo):boolean{
+    return this.current.indexOf(todo.id) != -1;
   }
 
   ngOnInit(): void {
@@ -58,6 +72,7 @@ export class TodoComponent implements OnInit, OnChanges, AfterViewChecked{
     this.todos = this.srv.todoList();
     console.log("after view checked "+this.todos.length);
     console.table(this.todos);
+    console.log("current "+this.current.length);
     this.cdr.detectChanges();
   }
 

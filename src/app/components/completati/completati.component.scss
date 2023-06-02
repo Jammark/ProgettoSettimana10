@@ -1,9 +1,11 @@
 #main{
-  height: 80vh;
+  min-height: 100%;
+
 }
 
 .card{
   width: 100%;
+  border: 2px solid rgb(182, 2, 182);
 }
 
 #lista{
