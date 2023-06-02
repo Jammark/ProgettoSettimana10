@@ -1,13 +1,12 @@
 import { Component , Input, AfterViewChecked, ChangeDetectorRef, OnInit} from '@angular/core';
 import { TodosService } from 'src/app/srv/todos.service';
 import { Todo } from 'src/app/model/todo';
-import { HeaderComponent } from '../header/header.component';
+
 
 @Component({
   selector: 'app-completati',
   templateUrl: './completati.component.html',
-  styleUrls: ['./completati.component.scss'],
-  providers: [HeaderComponent]
+  styleUrls: ['./completati.component.scss']
 })
 export class CompletatiComponent implements AfterViewChecked, OnInit{
 

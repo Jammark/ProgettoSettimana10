@@ -5,7 +5,6 @@ import { Component, Injectable } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-@Injectable()
 export class HeaderComponent {
 
 }
